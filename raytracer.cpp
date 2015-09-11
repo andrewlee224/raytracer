@@ -1,16 +1,19 @@
 #include <iostream>
 #include "FreeImage.h"
 
-
-const int WIDTH = 320;
-const int HEIGHT = 240;
-const int BPP = 24;
+#include "variables.h"
+#include "findray.h"
 
 
 int main(int argc, char* argv[]) {
 
     FreeImage_Initialise();
     std::cout << "FreeImage Version " << FreeImage_GetVersion() << std::endl;
+
+    vec3 eye(2.0, 2.0, 1.0);
+    vec3 center(3.0, 5.0, 0.0);
+    vec3 up(0.0, 0.0, 1.0);
+    find_ray_thru_pixel(eye, center, up, 90, 90, 20.0, 20.0);
     
     FIBITMAP* bitmap = FreeImage_Allocate(WIDTH, HEIGHT, BPP);
     RGBQUAD color;
