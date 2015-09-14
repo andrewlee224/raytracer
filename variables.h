@@ -11,3 +11,6 @@ typedef glm::vec4 vec4;
 const int WIDTH = 320;
 const int HEIGHT = 240;
 const int BPP = 24;
+
+// for float operation approximations
+const float EPSILON = 0.0001;
