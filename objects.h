@@ -10,6 +10,8 @@ enum class ObjectType{Sphere, Triangle};
 struct Light {
     vec4 position;
     vec4 color;
+    Light();
+    Light(vec4 position, vec4 color);
 };
 
 
@@ -57,10 +59,11 @@ struct Triangle: public GeomObject {
 
 
 struct Scene {
-    GeomObject* object_arr[128];
-    Light* light_arr[128];
+    GeomObject** object_arr;
+    Light** light_arr;
     int used_objects;
     int used_lights;
+    Scene();
 };
 
 

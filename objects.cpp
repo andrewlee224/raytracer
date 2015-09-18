@@ -5,9 +5,14 @@ Intersection::Intersection(int found, vec3 position, vec3 normal):
     found(found), position(position), normal(normal)
 {}
 
-GeomObject::GeomObject() {
+Light::Light() 
+{}
 
-}
+Light::Light(vec4 position, vec4 color): position(position), color(color)
+{}
+
+GeomObject::GeomObject() 
+{}
 
 GeomObject::GeomObject(int scene_idx): scene_idx(scene_idx)
 {}
@@ -94,4 +99,10 @@ Triangle::Triangle(
 Intersection Triangle::intersect(vec3 eye, vec3 screen_ray) {
 
     return Intersection(0, vec3(1.0), vec3(1.0));
+}
+
+
+Scene::Scene() {
+    object_arr = new GeomObject*[128];
+    light_arr = new Light*[128];
 }
