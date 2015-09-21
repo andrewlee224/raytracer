@@ -69,6 +69,7 @@ vec4 compute_single_light(const vec3 direction, const vec4 lightcolor, const vec
 	vec4 phong = myspecular * lightcolor * glm::pow(glm::max(nDotH, 0.0f), myshininess) ; 
 
 	vec4 retval = lambert + phong ; 
+
 	return retval;            
 }  
 
@@ -105,6 +106,8 @@ vec4 find_color(Scene scene, Intersection intersection, vec3 pov) {
         acc_color += partial_color;
 
     }
+
+    acc_color = glm::normalize(acc_color);
 
     return acc_color;
 }

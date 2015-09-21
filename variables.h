@@ -11,8 +11,8 @@ typedef glm::mat4 mat4;
 typedef glm::vec3 vec3;
 typedef glm::vec4 vec4;
 
-const int WIDTH = 320;
-const int HEIGHT = 240;
+const int WIDTH = 640;
+const int HEIGHT = 480;
 const int FOVX = 160;
 const int FOVY = 155;
 const int BPP = 24;

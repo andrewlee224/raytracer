@@ -9,12 +9,12 @@
 int main(int argc, char* argv[]) {
 
     FreeImage_Initialise();
+
     std::cout << "FreeImage Version " << FreeImage_GetVersion() << std::endl;
 
     vec3 eye(0.0, 0.0, 3.0);
     vec3 center(0.0, 0.0, 0.0);
     vec3 up(0.0, 1.0, 0.0);
-    //find_ray_thru_pixel(eye, center, up, 90, 90, 20.0, 20.0);
     
     FIBITMAP* bitmap = FreeImage_Allocate(WIDTH, HEIGHT, BPP);
     RGBQUAD color;
@@ -56,25 +56,19 @@ int main(int argc, char* argv[]) {
             y = float(j) + 0.5;
             vec3 screen_ray = find_ray_thru_pixel(eye, center, up, FOVX, FOVY, x, y);
             
-            // only one object for now
-            //Intersection intersection = sphere1.intersect(eye, screen_ray);
-
             Intersection intersection = find_intersection(scene, eye, screen_ray);
 
             if (intersection.found) {
                 vec4 found_color = find_color(scene, intersection, eye);
-                color.rgbRed = found_color[0] * 255.0;
+                color.rgbRed = found_color[2] * 255.0;
                 color.rgbGreen = found_color[1] * 255.0;
-                color.rgbBlue = found_color[2] * 255.0;
+                color.rgbBlue = found_color[0] * 255.0;
             } else {
                 color.rgbRed = 0.0;
                 color.rgbGreen = 0.0;
                 color.rgbBlue = 0.0;
             }
 
-            //color.rgbRed = (double)i / WIDTH * 255.0;
-            //color.rgbGreen = (double)j / HEIGHT * 255.0;
-            //color.rgbBlue = 0;
             FreeImage_SetPixelColor(bitmap, i, j, &color);
         }
     }
